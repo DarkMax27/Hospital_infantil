@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('camas', function (Blueprint $table) {
             $table->id();
+            $table->string('numero_de_cama');
+            $table->boolean('ocupada')->default(false);
+            $table->unsignedBigInteger('id_hospital');
+            $table->foreign('id_hospital')->references('id')->on('hospitales')->onDelete('cascade');
             $table->timestamps();
         });
     }

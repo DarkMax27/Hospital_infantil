@@ -8,9 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Paciente extends Model
 {
     use HasFactory;
+    protected $table = 'pacientes';
+    protected $fillable = [
+        'nombre_completo', 
+        'edad', 'sexo', 
+        'fecha_nacimiento', 
+        'ciudad_origen',
+        'fecha_inscripcion', 
+        'hospital_id', 
+        'nombre_del_tutor', 
+        'telefono_del_tutor'
+    ];
 
     public function hospital()
     {
-        return $this->belongsTo(Hospital::class, 'id_hospital_origen');
+        return $this->belongsTo(Hospital::class, 'hospital_id');
     }
 }

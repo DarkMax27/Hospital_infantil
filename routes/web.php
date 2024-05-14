@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\HomeController; // Importa el controlador HomeController
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+// Ruta corregida para el home
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// Ruta de recursos para Pacientes
+Route::resource('pacientes', PacienteController::class);
